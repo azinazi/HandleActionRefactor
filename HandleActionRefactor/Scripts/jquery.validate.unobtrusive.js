@@ -192,7 +192,7 @@
         /// <param name="params" type="Array" optional="true">[Optional] An array of parameter names (strings) that will
         /// be extracted from the data-val-nnnn-mmmm HTML attributes (where nnnn is the adapter name, and
         /// mmmm is the parameter name).</param>
-        /// <param name="fn" type="Function">The function to call, which adapts the values from the HTML
+        /// <param name="fn" type="Conditiontion">The function to call, which adapts the values from the HTML
         /// attributes into jQuery Validate rules and/or messages.</param>
         /// <returns type="jQuery.validator.unobtrusive.adapters" />
         if (!fn) {  // Called with no params, just a function

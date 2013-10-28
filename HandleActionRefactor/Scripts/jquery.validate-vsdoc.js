@@ -1,4 +1,4 @@
-/*
+﻿/*
 * This file has been commented to support Visual Studio Intellisense.
 * You should not use this file at runtime inside the browser--it is only
 * intended to be used only for design-time IntelliSense.  Please use the
@@ -1007,7 +1007,7 @@ $.extend($.validator, {
 		/// The name of the method, used to identify and referencing it, must be a valid javascript
 		/// identifier
 		/// </param>
-		/// <param name="method" type="Function">
+		/// <param name="method" type="Conditiontion">
 		/// The actual method implementation, returning true if an element is valid
 		/// </param>
 		/// <param name="message" type="String" optional="true">

@@ -8,13 +8,13 @@
 // MicrosoftAjax.js
 // Microsoft AJAX Framework.
  
-Function.__typeName = 'Function';
+Function.__typeName = 'Conditiontion';
 Function.__class = true;
 Function.createCallback = function Function$createCallback(method, context) {
-    /// <summary locid="M:J#Function.createCallback" />
-    /// <param name="method" type="Function"></param>
+    /// <summary locid="M:J#Conditiontion.createCallback" />
+    /// <param name="method" type="Conditiontion"></param>
     /// <param name="context" mayBeNull="true"></param>
-    /// <returns type="Function"></returns>
+    /// <returns type="Conditiontion"></returns>
     var e = Function._validateParams(arguments, [
         {name: "method", type: Function},
         {name: "context", mayBeNull: true}
@@ -34,10 +34,10 @@ Function.createCallback = function Function$createCallback(method, context) {
     }
 }
 Function.createDelegate = function Function$createDelegate(instance, method) {
-    /// <summary locid="M:J#Function.createDelegate" />
+    /// <summary locid="M:J#Conditiontion.createDelegate" />
     /// <param name="instance" mayBeNull="true"></param>
-    /// <param name="method" type="Function"></param>
-    /// <returns type="Function"></returns>
+    /// <param name="method" type="Conditiontion"></param>
+    /// <returns type="Conditiontion"></returns>
     var e = Function._validateParams(arguments, [
         {name: "instance", mayBeNull: true},
         {name: "method", type: Function}
@@ -48,10 +48,10 @@ Function.createDelegate = function Function$createDelegate(instance, method) {
     }
 }
 Function.emptyFunction = Function.emptyMethod = function Function$emptyMethod() {
-    /// <summary locid="M:J#Function.emptyMethod" />
+    /// <summary locid="M:J#Conditiontion.emptyMethod" />
 }
 Function.validateParameters = function Function$validateParameters(parameters, expectedParameters, validateParameterCount) {
-    /// <summary locid="M:J#Function.validateParameters" />
+    /// <summary locid="M:J#Conditiontion.validateParameters" />
     /// <param name="parameters"></param>
     /// <param name="expectedParameters"></param>
     /// <param name="validateParameterCount" type="Boolean" optional="true"></param>
@@ -629,7 +629,7 @@ Type.prototype.getBaseMethod = function Type$getBaseMethod(instance, name) {
     /// <summary locid="M:J#Type.getBaseMethod" />
     /// <param name="instance"></param>
     /// <param name="name" type="String"></param>
-    /// <returns type="Function" mayBeNull="true"></returns>
+    /// <returns type="Conditiontion" mayBeNull="true"></returns>
     var e = Function._validateParams(arguments, [
         {name: "instance"},
         {name: "name", type: String}
@@ -1102,7 +1102,7 @@ Array.dequeue = function Array$dequeue(array) {
 Array.forEach = function Array$forEach(array, method, instance) {
     /// <summary locid="M:J#Array.forEach" />
     /// <param name="array" type="Array" elementMayBeNull="true"></param>
-    /// <param name="method" type="Function"></param>
+    /// <param name="method" type="Conditiontion"></param>
     /// <param name="instance" optional="true" mayBeNull="true"></param>
     var e = Function._validateParams(arguments, [
         {name: "array", type: Array, elementMayBeNull: true},
@@ -1804,7 +1804,7 @@ Sys.Observer.addEventHandler = function Sys$Observer$addEventHandler(target, eve
     /// <summary locid="M:J#Sys.Observer.addEventHandler" />
     /// <param name="target"></param>
     /// <param name="eventName" type="String"></param>
-    /// <param name="handler" type="Function"></param>
+    /// <param name="handler" type="Conditiontion"></param>
     var e = Function._validateParams(arguments, [
         {name: "target"},
         {name: "eventName", type: String},
@@ -1821,7 +1821,7 @@ Sys.Observer.removeEventHandler = function Sys$Observer$removeEventHandler(targe
     /// <summary locid="M:J#Sys.Observer.removeEventHandler" />
     /// <param name="target"></param>
     /// <param name="eventName" type="String"></param>
-    /// <param name="handler" type="Function"></param>
+    /// <param name="handler" type="Conditiontion"></param>
     var e = Function._validateParams(arguments, [
         {name: "target"},
         {name: "eventName", type: String},
@@ -1853,7 +1853,7 @@ Sys.Observer.raiseEvent = function Sys$Observer$raiseEvent(target, eventName, ev
 Sys.Observer.addPropertyChanged = function Sys$Observer$addPropertyChanged(target, handler) {
     /// <summary locid="M:J#Sys.Observer.addPropertyChanged" />
     /// <param name="target" mayBeNull="false"></param>
-    /// <param name="handler" type="Function"></param>
+    /// <param name="handler" type="Conditiontion"></param>
     var e = Function._validateParams(arguments, [
         {name: "target"},
         {name: "handler", type: Function}
@@ -1865,7 +1865,7 @@ Sys.Observer.addPropertyChanged = function Sys$Observer$addPropertyChanged(targe
 Sys.Observer.removePropertyChanged = function Sys$Observer$removePropertyChanged(target, handler) {
     /// <summary locid="M:J#Sys.Observer.removePropertyChanged" />
     /// <param name="target" mayBeNull="false"></param>
-    /// <param name="handler" type="Function"></param>
+    /// <param name="handler" type="Conditiontion"></param>
     var e = Function._validateParams(arguments, [
         {name: "target"},
         {name: "handler", type: Function}
@@ -1981,7 +1981,7 @@ Sys.Observer.raisePropertyChanged = function Sys$Observer$raisePropertyChanged(t
 Sys.Observer.addCollectionChanged = function Sys$Observer$addCollectionChanged(target, handler) {
     /// <summary locid="M:J#Sys.Observer.addCollectionChanged" />
     /// <param name="target" type="Array" elementMayBeNull="true"></param>
-    /// <param name="handler" type="Function"></param>
+    /// <param name="handler" type="Conditiontion"></param>
     var e = Function._validateParams(arguments, [
         {name: "target", type: Array, elementMayBeNull: true},
         {name: "handler", type: Function}
@@ -1992,7 +1992,7 @@ Sys.Observer.addCollectionChanged = function Sys$Observer$addCollectionChanged(t
 Sys.Observer.removeCollectionChanged = function Sys$Observer$removeCollectionChanged(target, handler) {
     /// <summary locid="M:J#Sys.Observer.removeCollectionChanged" />
     /// <param name="target" type="Array" elementMayBeNull="true"></param>
-    /// <param name="handler" type="Function"></param>
+    /// <param name="handler" type="Conditiontion"></param>
     var e = Function._validateParams(arguments, [
         {name: "target", type: Array, elementMayBeNull: true},
         {name: "handler", type: Function}
@@ -2117,7 +2117,7 @@ Sys.Observer._observeMethods = {
     addEventHandler: function(eventName, handler) {
         /// <summary locid="M:J#Sys.Observer.raiseCollectionChanged" />
         /// <param name="eventName" type="String"></param>
-        /// <param name="handler" type="Function"></param>
+        /// <param name="handler" type="Conditiontion"></param>
         var e = Function._validateParams(arguments, [
             {name: "eventName", type: String},
             {name: "handler", type: Function}
@@ -2128,7 +2128,7 @@ Sys.Observer._observeMethods = {
     removeEventHandler: function(eventName, handler) {
         /// <summary locid="M:J#Sys.Observer.raiseCollectionChanged" />
         /// <param name="eventName" type="String"></param>
-        /// <param name="handler" type="Function"></param>
+        /// <param name="handler" type="Conditiontion"></param>
         var e = Function._validateParams(arguments, [
             {name: "eventName", type: String},
             {name: "handler", type: Function}
@@ -3452,7 +3452,7 @@ Sys.EventHandlerList = function Sys$EventHandlerList() {
     function Sys$EventHandlerList$addHandler(id, handler) {
         /// <summary locid="M:J#Sys.EventHandlerList.addHandler" />
         /// <param name="id" type="String"></param>
-        /// <param name="handler" type="Function"></param>
+        /// <param name="handler" type="Conditiontion"></param>
         var e = Function._validateParams(arguments, [
             {name: "id", type: String},
             {name: "handler", type: Function}
@@ -3468,7 +3468,7 @@ Sys.EventHandlerList = function Sys$EventHandlerList() {
     function Sys$EventHandlerList$removeHandler(id, handler) {
         /// <summary locid="M:J#Sys.EventHandlerList.removeHandler" />
         /// <param name="id" type="String"></param>
-        /// <param name="handler" type="Function"></param>
+        /// <param name="handler" type="Conditiontion"></param>
         var e = Function._validateParams(arguments, [
             {name: "id", type: String},
             {name: "handler", type: Function}
@@ -3479,7 +3479,7 @@ Sys.EventHandlerList = function Sys$EventHandlerList() {
     function Sys$EventHandlerList$getHandler(id) {
         /// <summary locid="M:J#Sys.EventHandlerList.getHandler" />
         /// <param name="id" type="String"></param>
-        /// <returns type="Function"></returns>
+        /// <returns type="Conditiontion"></returns>
         var e = Function._validateParams(arguments, [
             {name: "id", type: String}
         ]);
@@ -4032,7 +4032,7 @@ var $addHandler = Sys.UI.DomEvent.addHandler = function Sys$UI$DomEvent$addHandl
     /// <summary locid="M:J#Sys.UI.DomEvent.addHandler" />
     /// <param name="element"></param>
     /// <param name="eventName" type="String"></param>
-    /// <param name="handler" type="Function"></param>
+    /// <param name="handler" type="Conditiontion"></param>
     /// <param name="autoRemove" type="Boolean" optional="true"></param>
     var e = Function._validateParams(arguments, [
         {name: "element"},
@@ -4139,7 +4139,7 @@ var $removeHandler = Sys.UI.DomEvent.removeHandler = function Sys$UI$DomEvent$re
     /// <summary locid="M:J#Sys.UI.DomEvent.removeHandler" />
     /// <param name="element"></param>
     /// <param name="eventName" type="String"></param>
-    /// <param name="handler" type="Function"></param>
+    /// <param name="handler" type="Conditiontion"></param>
     var e = Function._validateParams(arguments, [
         {name: "element"},
         {name: "eventName", type: String},
@@ -5505,7 +5505,7 @@ Sys._Application.prototype.set_enableHistory = function Sys$_Application$set_ena
 };
 Sys._Application.prototype.add_navigate = function Sys$_Application$add_navigate(handler) {
     /// <summary locid="E:J#Sys.Application.navigate" />
-    /// <param name="handler" type="Function"></param>
+    /// <param name="handler" type="Conditiontion"></param>
     var e = Function._validateParams(arguments, [
         {name: "handler", type: Function}
     ]);
@@ -5514,7 +5514,7 @@ Sys._Application.prototype.add_navigate = function Sys$_Application$add_navigate
 };
 Sys._Application.prototype.remove_navigate = function Sys$_Application$remove_navigate(handler) {
     /// <summary locid="M:J#Sys._Application.remove_navigate" />
-    /// <param name="handler" type="Function"></param>
+    /// <param name="handler" type="Conditiontion"></param>
     var e = Function._validateParams(arguments, [
         {name: "handler", type: Function}
     ]);
@@ -6540,7 +6540,7 @@ Sys.Net.WebRequest.registerClass('Sys.Net.WebRequest');
 Sys._ScriptLoaderTask = function Sys$_ScriptLoaderTask(scriptElement, completedCallback) {
     /// <summary locid="M:J#Sys._ScriptLoaderTask.#ctor" />
     /// <param name="scriptElement" domElement="true"></param>
-    /// <param name="completedCallback" type="Function"></param>
+    /// <param name="completedCallback" type="Conditiontion"></param>
     var e = Function._validateParams(arguments, [
         {name: "scriptElement", domElement: true},
         {name: "completedCallback", type: Function}
@@ -6666,7 +6666,7 @@ Sys.Net.WebServiceProxy = function Sys$Net$WebServiceProxy() {
         this._userContext = value;
     }
     function Sys$Net$WebServiceProxy$get_defaultSucceededCallback() {
-        /// <value type="Function" mayBeNull="true" locid="P:J#Sys.Net.WebServiceProxy.defaultSucceededCallback"></value>
+        /// <value type="Conditiontion" mayBeNull="true" locid="P:J#Sys.Net.WebServiceProxy.defaultSucceededCallback"></value>
         if (arguments.length !== 0) throw Error.parameterCount();
         return this._succeeded || null;
     }
@@ -6676,7 +6676,7 @@ Sys.Net.WebServiceProxy = function Sys$Net$WebServiceProxy() {
         this._succeeded = value;
     }
     function Sys$Net$WebServiceProxy$get_defaultFailedCallback() {
-        /// <value type="Function" mayBeNull="true" locid="P:J#Sys.Net.WebServiceProxy.defaultFailedCallback"></value>
+        /// <value type="Conditiontion" mayBeNull="true" locid="P:J#Sys.Net.WebServiceProxy.defaultFailedCallback"></value>
         if (arguments.length !== 0) throw Error.parameterCount();
         return this._failed || null;
     }
@@ -6721,8 +6721,8 @@ Sys.Net.WebServiceProxy = function Sys$Net$WebServiceProxy() {
         /// <param name="methodName" type="String"></param>
         /// <param name="useGet" type="Boolean"></param>
         /// <param name="params"></param>
-        /// <param name="onSuccess" type="Function" mayBeNull="true" optional="true"></param>
-        /// <param name="onFailure" type="Function" mayBeNull="true" optional="true"></param>
+        /// <param name="onSuccess" type="Conditiontion" mayBeNull="true" optional="true"></param>
+        /// <param name="onFailure" type="Conditiontion" mayBeNull="true" optional="true"></param>
         /// <param name="userContext" mayBeNull="true" optional="true"></param>
         /// <returns type="Sys.Net.WebRequest" mayBeNull="true"></returns>
         var e = Function._validateParams(arguments, [
@@ -6764,8 +6764,8 @@ Sys.Net.WebServiceProxy.invoke = function Sys$Net$WebServiceProxy$invoke(service
     /// <param name="methodName" type="String" mayBeNull="true" optional="true"></param>
     /// <param name="useGet" type="Boolean" optional="true"></param>
     /// <param name="params" mayBeNull="true" optional="true"></param>
-    /// <param name="onSuccess" type="Function" mayBeNull="true" optional="true"></param>
-    /// <param name="onFailure" type="Function" mayBeNull="true" optional="true"></param>
+    /// <param name="onSuccess" type="Conditiontion" mayBeNull="true" optional="true"></param>
+    /// <param name="onFailure" type="Conditiontion" mayBeNull="true" optional="true"></param>
     /// <param name="userContext" mayBeNull="true" optional="true"></param>
     /// <param name="timeout" type="Number" optional="true"></param>
     /// <param name="enableJsonp" type="Boolean" optional="true" mayBeNull="true"></param>

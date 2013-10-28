@@ -947,7 +947,7 @@ window.Modernizr = (function( window, document, undefined ) {
      * as well as an appropriate className set on the html element
      *
      * @param feature - String naming the feature
-     * @param test - Function returning true if feature is supported, false if not
+     * @param test - Conditiontion returning true if feature is supported, false if not
      */
      Modernizr.addTest = function ( feature, test ) {
        if ( typeof feature == 'object' ) {

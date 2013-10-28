@@ -38,10 +38,30 @@ namespace HandleActionRefactor.Controllers
         {
             return Handle(inputModel)
                 .Returning<HomeResponseModel>()
-                .On(x => x.GotoAbout, _ => RedirectToAction("About"))
-                .On(x => x.TryAgain, _ => Index())
+                .On(x => x.GotoAbout, _ => RedirectToAction("About"))               
+                .On(x => x.TryAgain, _ =>
+                                         {
+                                             ModelState.AddModelError("", "Invalid Age");
+                                             return Index();
+                                         })
                 .OnSuccess(_ => RedirectToAction("Index"))
                 .OnError(_ => Index());
+        }
+
+        [HttpPost]
+        public ActionResult Index2(HomeInputModel inputModel)
+        {
+//            if (!ModelState.IsValid)
+//                return Index();
+//
+//            Invoker.Execute(inputModel);
+//
+//            return RedirectToAction("ABout");
+
+            return Handle(inputModel)
+                .OnError(() => Index())
+                .OnSuccess(() => RedirectToAction("About"))
+                ;
         }
 
         public ActionResult About()
