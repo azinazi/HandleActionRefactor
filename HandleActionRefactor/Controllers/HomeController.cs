@@ -76,8 +76,10 @@ namespace HandleActionRefactor.Controllers
 
             return Handle(inputModel)
                 .OnError(() => Index())
+                .OnSuccess(() => RedirectToAction("About"))
                 .Returning<HomeResponseModel>()
-                .OnSuccess(x => RedirectToAction("About"))
+                .OnSuccess(_ => RedirectToAction("Index"))
+                
                 ;
         }
 

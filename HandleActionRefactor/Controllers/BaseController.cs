@@ -46,7 +46,7 @@ namespace HandleActionRefactor.Controllers
 
         public HandleResultBuilder<T, TRet> Returning<TRet>()
         {
-            return new HandleResultBuilder<T, TRet>(_inputModel, _invoker);
+            return new HandleResultBuilder<T, TRet>(_inputModel, _invoker,_error,_success);
         }
 
         public static implicit operator HandleResult(HandleResultBuilder<T> builder)
@@ -89,11 +89,13 @@ namespace HandleActionRefactor.Controllers
         private Func<ActionResult> _error;
         private readonly List<ReturnActions<TRet>> _returnActions;
 
-        public HandleResultBuilder(T inputModel, IInvoker invoker)
+        public HandleResultBuilder(T inputModel, IInvoker invoker, Func<ActionResult> error, Func<ActionResult> success)
         {
             _inputModel = inputModel;
             _invoker = invoker;
             _returnActions = new List<ReturnActions<TRet>>();
+            _error = error;
+            _success =(x => success());
         }
 
         public HandleResultBuilder<T, TRet> On(Func<TRet, bool> condition, Func<TRet, ActionResult> actionCallback)
