@@ -21,11 +21,27 @@ namespace HandleActionRefactor.Controllers
     {
         private readonly T _inputModel;
         private readonly IInvoker _invoker;
+        private Func<ActionResult>  _error;
+        private Func<ActionResult> _success;
 
         public HandleResultBuilder(T inputModel, IInvoker invoker)
         {
             _inputModel = inputModel;
             _invoker = invoker;
+        }
+
+        public HandleResultBuilder<T> OnError(Func<ActionResult> errorCallback)
+        {
+            
+            _error = errorCallback;
+            return this;
+        }
+
+        public HandleResultBuilder<T> OnSuccess(Func<ActionResult> successCallback)
+        {
+            
+            _success = successCallback;
+            return this;
         }
 
         public HandleResultBuilder<T, TRet> Returning<TRet>()
@@ -39,30 +55,39 @@ namespace HandleActionRefactor.Controllers
         }
         public class HandleResult : ActionResult
         {
-            private readonly HandleResultBuilder<T> _handlBuilder;
+            private readonly HandleResultBuilder<T> _builder;
 
             public HandleResult(HandleResultBuilder<T> builder)
             {
-                _handlBuilder = builder;
+                _builder = builder;
             }
             //public void Returning
             public override void ExecuteResult(ControllerContext context)
             {
+                if (!context.Controller.ViewData.ModelState.IsValid && _builder._error != null)
+                {
+                    _builder._error().ExecuteResult(context);
+                }
+                else
+                {
+                   _builder._invoker.Execute(_builder._inputModel);                  
 
+                    if (_builder._success != null)
+                        _builder._success().ExecuteResult(context);
+                }
             }
 
         }
     }
-    
+
 
     public class HandleResultBuilder<T, TRet>
     {
         private readonly T _inputModel;
         private readonly IInvoker _invoker;
         private Func<TRet, ActionResult> _success;
-        private Func<TRet, ActionResult> _error;
+        private Func<ActionResult> _error;
         private readonly List<ReturnActions<TRet>> _returnActions;
-        private TRet _result;
 
         public HandleResultBuilder(T inputModel, IInvoker invoker)
         {
@@ -77,14 +102,13 @@ namespace HandleActionRefactor.Controllers
             return this;
         }
 
-
         public HandleResultBuilder<T, TRet> OnSuccess(Func<TRet, ActionResult> successCallback)
         {
             _success = successCallback;
             return this;
         }
 
-        public HandleResultBuilder<T, TRet> OnError(Func<TRet, ActionResult> errorCallback)
+        public HandleResultBuilder<T, TRet> OnError(Func<ActionResult> errorCallback)
         {
             _error = errorCallback;
             return this;
@@ -106,24 +130,25 @@ namespace HandleActionRefactor.Controllers
 
             public override void ExecuteResult(ControllerContext context)
             {
-                _builder._result = _builder._invoker.Execute<TRet>(_builder._inputModel);
+            
 
                 if (!context.Controller.ViewData.ModelState.IsValid && _builder._error != null)
                 {
-                    _builder._error(_builder._result).ExecuteResult(context);
+                    _builder._error().ExecuteResult(context);
                 }
                 else
-                {
-                   var returnAction =  _builder._returnActions.FirstOrDefault(x => x.Condition(_builder._result));
+                {    
+                    var result = _builder._invoker.Execute<TRet>(_builder._inputModel);
+                    var returnAction = _builder._returnActions.FirstOrDefault(x => x.Condition(result));
 
-                   if (returnAction != null)
+                    if (returnAction != null)
                     {
-                        returnAction.Action(_builder._result).ExecuteResult(context);
+                        returnAction.Action(result).ExecuteResult(context);
                         return;
                     }
 
                     if (_builder._success != null)
-                        _builder._success(_builder._result).ExecuteResult(context);
+                        _builder._success(result).ExecuteResult(context);
                 }
             }
         }

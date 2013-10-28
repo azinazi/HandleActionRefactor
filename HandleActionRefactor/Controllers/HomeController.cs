@@ -34,7 +34,7 @@ namespace HandleActionRefactor.Controllers
 //        }
 
         [HttpPost]
-        public ActionResult Index(HomeInputModel inputModel)
+        public ActionResult Index2(HomeInputModel inputModel)
         {
             return Handle(inputModel)
                 .Returning<HomeResponseModel>()
@@ -45,11 +45,11 @@ namespace HandleActionRefactor.Controllers
                                              return Index();
                                          })
                 .OnSuccess(_ => RedirectToAction("Index"))
-                .OnError(_ => Index());
+                .OnError(() => Index());
         }
 
         [HttpPost]
-        public ActionResult Index2(HomeInputModel inputModel)
+        public ActionResult Index1(HomeInputModel inputModel)
         {
 //            if (!ModelState.IsValid)
 //                return Index();
@@ -61,6 +61,23 @@ namespace HandleActionRefactor.Controllers
             return Handle(inputModel)
                 .OnError(() => Index())
                 .OnSuccess(() => RedirectToAction("About"))
+                ;
+        }
+
+        [HttpPost]
+        public ActionResult Index(HomeInputModel inputModel)
+        {
+//            if (!ModelState.IsValid)
+//                return Index();
+//
+//            var response = Invoker.Execute<HomeResponseModel>(inputModel);
+//
+//            return RedirectToAction("ABout");
+
+            return Handle(inputModel)
+                .OnError(() => Index())
+                .Returning<HomeResponseModel>()
+                .OnSuccess(x => RedirectToAction("About"))
                 ;
         }
 
