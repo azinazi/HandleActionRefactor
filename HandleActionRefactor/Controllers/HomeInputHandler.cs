@@ -8,6 +8,10 @@ namespace HandleActionRefactor.Controllers
         {
             if (input.Age == 42)
                 return new HomeResponseModel() { GotoAbout = true };
+
+            if (input.Age > 100)
+                return new HomeResponseModel() { TryAgain = true };
+
             return new HomeResponseModel();
         }
     }

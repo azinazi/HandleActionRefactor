@@ -14,32 +14,40 @@ namespace HandleActionRefactor.Controllers
             return View(vm);
         }
 
+//        [HttpPost]
+//        public ActionResult Index(HomeInputModel inputModel)
+//        {
+//            if (!ModelState.IsValid)
+//                return Index();
+//
+//            var result = Invoker.Execute<HomeResponseModel>(inputModel);
+//            if (result.GotoAbout)
+//                return RedirectToAction("About");
+//
+//            if (result.TryAgain)
+//            {
+//                ModelState.AddModelError("","Invalid Age");
+//                return Index();
+//
+//            }
+//            return RedirectToAction("Index");
+//        }
+
         [HttpPost]
         public ActionResult Index(HomeInputModel inputModel)
         {
-            if (!ModelState.IsValid)
-                return Index();
-
-            var result = Invoker.Execute<HomeResponseModel>(inputModel);
-            if (result.GotoAbout)
-                return RedirectToAction("About");
-
-            return RedirectToAction("Index");
+            return Handle(inputModel)
+                .Returning<HomeResponseModel>()
+                .On(x => x.GotoAbout, _ => RedirectToAction("About"))
+                .On(x => x.TryAgain, _ => Index())
+                .OnSuccess(_ => RedirectToAction("Index"))
+                .OnError(_ => Index());
         }
-
-        //[HttpPost]
-        //public ActionResult Index(HomeInputModel inputModel)
-        //{
-        //    return Handle(inputModel)
-        //        .Returning<HomeResponseModel>()
-        //        .On(x => x.GotoAbout, _ => RedirectToAction("About"))
-        //        .OnSuccess(_ => RedirectToAction("Index"))
-        //        .OnError(_ => Index());
-        //}
 
         public ActionResult About()
         {
             return View();
         }
     }
+
 }
