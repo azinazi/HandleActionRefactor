@@ -34,8 +34,9 @@ namespace HandleActionRefactor.Controllers
 //        }
 
         [HttpPost]
-        public ActionResult Index2(HomeInputModel inputModel)
+        public ActionResult Index(HomeInputModel inputModel)
         {
+            
             return Handle(inputModel)
                 .Returning<HomeResponseModel>()
                 .On(x => x.GotoAbout, _ => RedirectToAction("About"))               
@@ -44,7 +45,8 @@ namespace HandleActionRefactor.Controllers
                                              ModelState.AddModelError("", "Invalid Age");
                                              return Index();
                                          })
-                .OnSuccess(_ => RedirectToAction("Index"))
+                .OnSuccessWithMessage(x=>RedirectToAction("About"),"Helloooooo")
+                //.OnSuccess(_ => RedirectToAction("Index"))
                 .OnError(() => Index());
         }
 
@@ -65,7 +67,7 @@ namespace HandleActionRefactor.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(HomeInputModel inputModel)
+        public ActionResult Index4(HomeInputModel inputModel)
         {
 //            if (!ModelState.IsValid)
 //                return Index();

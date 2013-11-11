@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using System.Web.Routing;
 using SchoStack.Web;
 using System.Linq;
 
@@ -85,7 +86,7 @@ namespace HandleActionRefactor.Controllers
     {
         private readonly T _inputModel;
         private readonly IInvoker _invoker;
-        private Func<TRet, ActionResult> _success;
+        private Func<TRet,ControllerContext, ActionResult> _success;
         private Func<ActionResult> _error;
         private readonly List<ReturnActions<TRet>> _returnActions;
 
@@ -95,7 +96,7 @@ namespace HandleActionRefactor.Controllers
             _invoker = invoker;
             _returnActions = new List<ReturnActions<TRet>>();
             _error = error;
-            _success =(x => success());
+            _success =(_,__ )=> success();
         }
 
         public HandleResultBuilder<T, TRet> On(Func<TRet, bool> condition, Func<TRet, ActionResult> actionCallback)
@@ -104,9 +105,15 @@ namespace HandleActionRefactor.Controllers
             return this;
         }
 
-        public HandleResultBuilder<T, TRet> OnSuccess(Func<TRet, ActionResult> successCallback)
+        public HandleResultBuilder<T, TRet> OnSuccess(Func<TRet,ControllerContext, ActionResult> successCallback)
         {
             _success = successCallback;
+            return this;
+        }
+
+        public HandleResultBuilder<T, TRet> OnSuccess(Func<TRet, ActionResult> successCallback)
+        {
+            _success = (x,_) => successCallback(x);
             return this;
         }
 
@@ -150,12 +157,27 @@ namespace HandleActionRefactor.Controllers
                     }
 
                     if (_builder._success != null)
-                        _builder._success(result).ExecuteResult(context);
+                        _builder._success(result,context).ExecuteResult(context);
                 }
             }
         }
     }
 
+    public static class HandleCustomActions
+    {
+
+        public static HandleResultBuilder<T, TRet> OnSuccessWithMessage<T, TRet>(this HandleResultBuilder<T, TRet> handleResultBuilder, 
+            Func<TRet, ActionResult> redirectTo, string message)
+        {
+            
+            return handleResultBuilder.OnSuccess((returnModel,controllerContext)=>
+            {
+                controllerContext.Controller.TempData.Add("Message", message);
+                return redirectTo(returnModel);
+            }
+                );
+        }
+    }
 
     public class ReturnActions<TRet>
     {
